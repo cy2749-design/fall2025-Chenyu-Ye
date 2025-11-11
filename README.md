@@ -51,9 +51,6 @@ I chose **Option A (Multi-page)** because:
 
 Still learning HTML basics, so I kept it simple :)
 
-## Mockups
-- (WIP) https://figma.com/file/your-mockup  
-  If not available: No mockups yet – will add next week
 
 ## Week 8 Update
 - Key changes: Added `script.js`; data array with 5+ emotional letter items; dynamic DOM creation with `forEach`; injected into `#content-container` on `index.html`.
