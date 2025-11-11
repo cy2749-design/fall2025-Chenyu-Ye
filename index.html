@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slow Letter - Letter Records</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -14,88 +15,98 @@
     </nav>
 
     <main>
-        <h2>Letter Records</h2>
+        <h2>Letters in Waiting</h2>
+        
+        <p>Words written in reflection. Messages that need time.</p>
         
         <div>
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search your letters">
         </div>
 
         <table>
-            <Thead>
+            <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>With (Name/Phone)</th>
-                    <th>Type (Sent/Received)</th>
-                    <th>Created At</th>
-                    <th>Sent At</th>
-                    <th>Visited?</th>
+                    <th>Letter Title</th>
+                    <th>To / About</th>
+                    <th>Status</th>
+                    <th>Written At</th>
+                    <th>Scheduled For</th>
+                    <th>Opened?</th>
                     <th>Actions</th>
                 </tr>
-            </Thead>
+            </thead>
             <tbody>
                 <tr>
-                    <td>A heartfelt message</td>
-                    <td>Sophia Bennett / +1 310 555 0123</td>
+                    <td>About last night</td>
+                    <td>Sarah Miller</td>
                     <td>Sent</td>
                     <td>08/15/2023</td>
                     <td>08/16/2023</td>
                     <td>Yes</td>
-                    <td><a href="#">Copy Link</a> <a href="#">Revoke</a></td>
+                    <td><a href="#">Copy Link</a> <a href="#">Cancel</a></td>
                 </tr>
                 <tr>
-                    <td>A thoughtful note</td>
-                    <td>Ethan Carter / +1 310 555 0456</td>
-                    <td>Received</td>
+                    <td>Morning thoughts</td>
+                    <td>Ethan Carter</td>
+                    <td>Scheduled</td>
                     <td>08/10/2023</td>
                     <td>08/11/2023</td>
-                    <td>Yes</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>A quick update</td>
-                    <td>Olivia Hayes / +1 310 555 0789</td>
-                    <td>Draft</td>
-                    <td>08/05/2023</td>
-                    <td>NA</td>
-                    <td>No</td>
+                    <td>Pending</td>
                     <td><a href="#">Edit</a> <a href="#">Delete</a></td>
                 </tr>
                 <tr>
-                    <td>A long letter</td>
-                    <td>Liam Foster / +1 310 555 1011</td>
+                    <td>What I've been feeling</td>
+                    <td>Olivia Hayes</td>
+                    <td>Draft</td>
+                    <td>08/05/2023</td>
+                    <td>Not scheduled</td>
+                    <td>No</td>
+                    <td><a href="#">Continue</a> <a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Thank you for...</td>
+                    <td>Liam Foster</td>
                     <td>Sent</td>
                     <td>07/20/2023</td>
                     <td>07/21/2023</td>
                     <td>Yes</td>
-                    <td><a href="#">Copy Link</a> <a href="#">Revoke</a></td>
+                    <td><a href="#">Copy Link</a> <a href="#">Cancel</a></td>
                 </tr>
                 <tr>
-                    <td>A short message</td>
-                    <td>Ava Jenkins / +1 310 555 1213</td>
-                    <td>Received</td>
+                    <td>I'm sorry about</td>
+                    <td>Ava Jenkins</td>
+                    <td>Scheduled</td>
                     <td>07/15/2023</td>
                     <td>07/16/2023</td>
-                    <td>Yes</td>
-                    <td></td>
+                    <td>Pending</td>
+                    <td><a href="#">Edit</a> <a href="#">Delete</a></td>
                 </tr>
                 <tr>
-                    <td>A formal notice</td>
-                    <td>Noah Reed / +1 310 555 1415</td>
-                    <td>Revoked</td>
+                    <td>Cancelled thoughts</td>
+                    <td>Noah Reed</td>
+                    <td>Cancelled</td>
                     <td>07/01/2023</td>
                     <td>07/02/2023</td>
                     <td>No</td>
-                    <td>Revoked</td>
+                    <td>Cancelled</td>
             </tbody>
         </table>
 
         <p>Showing 1 to 6 of 24 records</p>
 
         <button><a href="write.html">+New Letter</a></button>
+        
+        <section id="dynamic-content">
+            <h2>Letters Waiting to Send (JS Generated)</h2>
+            <div id="content-container"></div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Slow Letter. All rights reserved.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
+
+
