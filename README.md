@@ -64,9 +64,6 @@ Still learning HTML basics, so I kept it simple :)
 ## How it works (JS)
 Data array → loop with `forEach` → `createElement` for each part → set `textContent`/attributes → `appendChild` into `#content-container`.
 
-## Note
-This week I intentionally kept a few beginner-style quirks (e.g., mixed `let`/`var`, a `console.log`, a misspelled class like `cardd`). They do not break functionality.
-
 ## Animation Update
 
 - Added hover transitions on navigation links and buttons.
