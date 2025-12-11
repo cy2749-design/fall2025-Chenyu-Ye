@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Letter - Write Letter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="write">
+    <nav>
+        <h1>Slow Letter</h1>
+        <a href="index.html">Letters</a>
+        <a href="write.html">New Letter</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+
+    <main>
+        <h2>Write What You Feel</h2>
+        <p>Express yourself. Take your time. Decide later.</p>
+        
+        <form id="letter-form">
+            <div class="form-group">
+                <label>Recipient Type</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="recipient-type" value="human" checked> Real person</label>
+                    <label><input type="radio" name="recipient-type" value="penpal"> AI pen pal</label>
+                </div>
+            </div>
+            
+            <!-- 真人收件人区域 -->
+            <div id="human-recipient-section" class="recipient-section">
+                <div class="form-group">
+                    <label for="contact-select">Select Contact <span class="required">*</span></label>
+                    <select id="contact-select" required>
+                        <option value="">-- Select a contact --</option>
+                        <option value="new">+ Add new contact...</option>
+                    </select>
+                </div>
+                
+                <!-- 新增联系人表单 -->
+                <div id="new-contact-form" class="new-contact-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="new-contact-name">Name <span class="required">*</span></label>
+                        <input type="text" id="new-contact-name" placeholder="Contact name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Send via</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="new-contact-channel" value="sms" checked> SMS</label>
+                            <label><input type="radio" name="new-contact-channel" value="email"> Email</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="phone-group">
+                        <label for="new-contact-phone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="new-contact-phone" placeholder="Phone number">
+                    </div>
+                    
+                    <div class="form-group" id="email-group" style="display: none;">
+                        <label for="new-contact-email">Email <span class="required">*</span></label>
+                        <input type="email" id="new-contact-email" placeholder="Email address">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI 笔友收件人区域 -->
+            <div id="penpal-recipient-section" class="recipient-section" style="display: none;">
+                <div class="form-group">
+                    <label for="penpal-select">Select Pen Pal <span class="required">*</span></label>
+                    <select id="penpal-select" required>
+                        <option value="">-- Select a pen pal --</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="title">Title (optional)</label>
+                <input type="text" id="title" placeholder="Give your letter a title">
+            </div>
+            
+            <div class="form-group">
+                <label for="body">Body <span class="required">*</span></label>
+                <textarea id="body" rows="10" placeholder="Write what you feel — you can choose to send later." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Sending Options</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="action" value="schedule" checked> Save & Schedule</label>
+                    <label><input type="radio" name="action" value="draft"> Save as Draft (no sending window yet)</label>
+                </div>
+            </div>
+            
+            <div class="form-group" id="window-options">
+                <label>Time Window</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="window" value="1-3"> Within 1-3 days</label>
+                    <label><input type="radio" name="window" value="3-7" checked> Within 3-7 days</label>
+                    <label><input type="radio" name="window" value="8-14"> Within 8-14 days</label>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Save & Schedule</button>
+                <a href="index.html" class="btn-link">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Slow Letter. All rights reserved.</p>
+    </footer>
+    
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // 页面初始化逻辑
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化数据
+            initializeData();
+            
+            // 加载联系人到下拉框
+            const contacts = loadContacts();
+            const contactSelect = document.getElementById('contact-select');
+            contacts.forEach(contact => {
+                const option = document.createElement('option');
+                option.value = contact.id;
+                option.textContent = contact.name + ' (' + (contact.channel === 'sms' ? 'SMS' : 'Email') + ')';
+                contactSelect.appendChild(option);
+            });
+            
+            // 加载笔友到下拉框
+            const penpals = loadPenpals();
+            const penpalSelect = document.getElementById('penpal-select');
+            penpals.forEach(penpal => {
+                const option = document.createElement('option');
+                option.value = penpal.id;
+                option.textContent = penpal.name + ' - ' + penpal.tagline;
+                penpalSelect.appendChild(option);
+            });
+            
+            // 收件人类型切换
+            const recipientTypeInputs = document.querySelectorAll('input[name="recipient-type"]');
+            const humanSection = document.getElementById('human-recipient-section');
+            const penpalSection = document.getElementById('penpal-recipient-section');
+            
+            function toggleRecipientSections() {
+                const selected = document.querySelector('input[name="recipient-type"]:checked');
+                if (selected && selected.value === 'penpal') {
+                    humanSection.style.display = 'none';
+                    penpalSection.style.display = 'block';
+                    document.getElementById('contact-select').removeAttribute('required');
+                    document.getElementById('penpal-select').setAttribute('required', 'required');
+                } else {
+                    humanSection.style.display = 'block';
+                    penpalSection.style.display = 'none';
+                    document.getElementById('penpal-select').removeAttribute('required');
+                    document.getElementById('contact-select').setAttribute('required', 'required');
+                }
+            }
+            
+            recipientTypeInputs.forEach(input => {
+                input.addEventListener('change', toggleRecipientSections);
+            });
+            
+            // 联系人选择切换（显示/隐藏新增联系人表单）
+            const contactSelectEl = document.getElementById('contact-select');
+            const newContactForm = document.getElementById('new-contact-form');
+            
+            contactSelectEl.addEventListener('change', () => {
+                if (contactSelectEl.value === 'new') {
+                    newContactForm.style.display = 'block';
+                } else {
+                    newContactForm.style.display = 'none';
+                }
+            });
+            
+            // 发送方式切换（显示/隐藏电话或邮箱字段）
+            const channelInputs = document.querySelectorAll('input[name="new-contact-channel"]');
+            const phoneGroup = document.getElementById('phone-group');
+            const emailGroup = document.getElementById('email-group');
+            
+            function toggleContactFields() {
+                const selected = document.querySelector('input[name="new-contact-channel"]:checked');
+                if (selected && selected.value === 'email') {
+                    phoneGroup.style.display = 'none';
+                    emailGroup.style.display = 'block';
+                    document.getElementById('new-contact-phone').removeAttribute('required');
+                    document.getElementById('new-contact-email').setAttribute('required', 'required');
+                } else {
+                    phoneGroup.style.display = 'block';
+                    emailGroup.style.display = 'none';
+                    document.getElementById('new-contact-email').removeAttribute('required');
+                    document.getElementById('new-contact-phone').setAttribute('required', 'required');
+                }
+            }
+            
+            channelInputs.forEach(input => {
+                input.addEventListener('change', toggleContactFields);
+            });
+            
+            // 根据选择的操作显示/隐藏时间窗口选项，并更新按钮文本
+            const actionInputs = document.querySelectorAll('input[name="action"]');
+            const windowOptions = document.getElementById('window-options');
+            const submitButton = document.querySelector('button[type="submit"]');
+            
+            function toggleWindowOptions() {
+                const selected = document.querySelector('input[name="action"]:checked');
+                if (selected && selected.value === 'draft') {
+                    windowOptions.style.display = 'none';
+                    if (submitButton) {
+                        submitButton.textContent = 'Save as Draft';
+                    }
+                } else {
+                    windowOptions.style.display = 'block';
+                    if (submitButton) {
+                        submitButton.textContent = 'Save & Schedule';
+                    }
+                }
+            }
+            
+            actionInputs.forEach(input => {
+                input.addEventListener('change', toggleWindowOptions);
+            });
+            
+            // 初始化
+            toggleRecipientSections();
+            toggleWindowOptions();
+        });
+    </script>
+</body>
+</html>
+
+

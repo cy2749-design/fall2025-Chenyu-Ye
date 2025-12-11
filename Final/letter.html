@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Letter - Letter Detail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="letter">
+    <nav>
+        <h1>Slow Letter</h1>
+        <a href="index.html">Letters</a>
+        <a href="write.html">New Letter</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+
+    <main>
+        <nav id="breadcrumb" class="breadcrumb">
+            <!-- 面包屑导航将通过 JavaScript 生成 -->
+        </nav>
+        
+        <header class="letter-header">
+            <h1 id="letter-title">Letter Title</h1>
+        </header>
+
+        <section class="letter-meta-section">
+            <div class="meta-item">
+                <strong>To / About:</strong>
+                <span id="letter-to-name"></span>
+            </div>
+            <div class="meta-item">
+                <strong>Relationship:</strong>
+                <span id="letter-relationship"></span>
+            </div>
+            <div class="meta-item">
+                <strong>Emotion:</strong>
+                <span id="letter-emotion"></span>
+            </div>
+            <div class="meta-item">
+                <strong>Status:</strong>
+                <span id="letter-status"></span>
+            </div>
+            <div class="meta-item">
+                <strong>Created:</strong>
+                <span id="letter-created-at"></span>
+            </div>
+            <div id="schedule-info" class="schedule-info" style="display: none;">
+                <!-- 发送窗口信息将通过 JavaScript 生成 -->
+            </div>
+        </section>
+
+        <section class="letter-body-section">
+            <h3>Letter Content</h3>
+            <div id="letter-body" class="letter-body">
+                <!-- 信件内容将通过 JavaScript 生成 -->
+            </div>
+        </section>
+
+        <section id="letter-actions" class="letter-actions">
+            <!-- 操作按钮将通过 JavaScript 生成 -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Slow Letter. All rights reserved.</p>
+    </footer>
+    
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+

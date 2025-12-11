@@ -1,0 +1,621 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f4f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+nav h1 {
+    margin: 0;
+    margin-right: 24px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+main header {
+    margin-bottom: 24px;
+}
+
+main header h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+main header p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+footer {
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #777777;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 按钮样式 */
+button, .btn-primary, .btn-secondary {
+    padding: 10px 18px;
+    border: none;
+    background-color: #333333;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .btn-primary:hover, .btn-secondary:hover {
+    background-color: #555555;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: #333333;
+}
+
+.btn-secondary {
+    background-color: #666666;
+}
+
+.btn-link {
+    color: #555555;
+    text-decoration: none;
+    padding: 10px 18px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #333333;
+}
+
+/* 过滤按钮 */
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    color: #555555;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+.filter-btn.active {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+/* 信件列表 */
+.letters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.letter-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: cardFadeIn 0.5s ease forwards;
+    transition: box-shadow 0.2s ease;
+}
+
+.letter-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.letter-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-draft {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.status-scheduled {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-sent {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.status-kept, .status-cancelled {
+    background-color: #fce4ec;
+    color: #c2185b;
+}
+
+.letter-meta {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #666;
+}
+
+.letter-meta p {
+    margin: 4px 0;
+}
+
+.emotion-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.channel-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.penpal-tag {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.schedule-info {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #555;
+}
+
+.letter-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.empty-state a {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* 表单样式 */
+form {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    max-width: 600px;
+}
+
+.recipient-section {
+    margin-bottom: 20px;
+}
+
+.new-contact-form {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #e0dedb;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #333333;
+}
+
+.required {
+    color: #d32f2f;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.form-actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* 信件详情页 */
+.breadcrumb {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.letter-meta-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    margin-bottom: 24px;
+}
+
+.meta-item {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.meta-item strong {
+    display: inline-block;
+    min-width: 100px;
+    color: #666;
+}
+
+.letter-body-section {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    margin-bottom: 24px;
+}
+
+.letter-body-section h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.letter-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.letter-body p {
+    margin: 12px 0;
+}
+
+/* 笔友对话区样式 */
+.penpal-conversation {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    margin-top: 24px;
+}
+
+.penpal-conversation h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.conversation-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.conversation-message {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+}
+
+.message-user {
+    background-color: #f0f7ff;
+    border-left: 3px solid #1976d2;
+    margin-left: 20%;
+}
+
+.message-penpal {
+    background-color: #f9f9f9;
+    border-left: 3px solid #7b1fa2;
+    margin-right: 20%;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.message-header strong {
+    color: #333;
+}
+
+.message-date {
+    color: #666;
+    font-size: 12px;
+}
+
+.message-body {
+    color: #333;
+    line-height: 1.6;
+}
+
+.message-body p {
+    margin: 8px 0;
+}
+
+.conversation-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0dedb;
+}
+
+.recipient-info {
+    color: #666;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* 设置页面联系人列表 */
+.contacts-list, .penpals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.contact-item, .penpal-item {
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #e0dedb;
+}
+
+.contact-info, .penpal-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.contact-address {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.penpal-tagline {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.schedule-info {
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border-left: 3px solid #333333;
+}
+
+/* 设置页面 */
+section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0dedb;
+    margin-bottom: 20px;
+}
+
+section h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+section p {
+    margin: 0 0 16px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 动画 */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    main {
+        padding: 16px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+    }
+    
+    nav h1 {
+        font-size: 18px;
+        margin-right: 16px;
+    }
+    
+    .letter-card {
+        padding: 16px;
+    }
+    
+    .letter-header {
+        flex-direction: column;
+    }
+    
+    form {
+        padding: 20px;
+    }
+    
+    .filters {
+        gap: 6px;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+/* 减少动画（无障碍） */
+@media (prefers-reduced-motion: reduce) {
+    .letter-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    nav a, button, .btn-primary, .btn-secondary {
+        transition: none;
+    }
+    
+    .letter-card:hover {
+        transform: none;
+    }
+}
+

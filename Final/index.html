@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Letter - Letter Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="index">
+    <nav>
+        <h1>Slow Letter</h1>
+        <a href="index.html">Letters</a>
+        <a href="write.html">New Letter</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+
+    <main>
+        <header>
+            <h2>Letters in Waiting</h2>
+            <p>Words written in reflection. Messages that need time.</p>
+        </header>
+        
+        <section class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="draft">Draft</button>
+            <button class="filter-btn" data-filter="scheduled">Scheduled</button>
+            <button class="filter-btn" data-filter="sent">Sent</button>
+            <button class="filter-btn" data-filter="kept">Kept</button>
+        </section>
+
+        <section id="letters-container" class="letters-list">
+            <!-- 信件列表将通过 JavaScript 动态生成 -->
+        </section>
+
+        <div class="actions">
+            <a href="write.html" class="btn-primary">+ New Letter</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Slow Letter. All rights reserved.</p>
+    </footer>
+    
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+

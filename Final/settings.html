@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Letter - Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="settings">
+    <nav>
+        <h1>Slow Letter</h1>
+        <a href="index.html">Letters</a>
+        <a href="write.html">New Letter</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+
+    <main>
+        <h2>Settings</h2>
+        
+        <form id="settings-form">
+            <section>
+                <h3>Default Sending Window</h3>
+                <p>Choose your preferred default time window for new letters.</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="default-window" value="1-3"> Within 1-3 days</label>
+                    <label><input type="radio" name="default-window" value="3-7" checked> Within 3-7 days</label>
+                    <label><input type="radio" name="default-window" value="8-14"> Within 8-14 days</label>
+                </div>
+            </section>
+            
+            <section>
+                <h3>Profile Name</h3>
+                <p>Your name (optional, will appear as signature in letters).</p>
+                <div class="form-group">
+                    <input type="text" id="profile-name" placeholder="Enter your name">
+                </div>
+            </section>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Save Settings</button>
+                <a href="index.html" class="btn-link">Back to Letters</a>
+            </div>
+        </form>
+        
+        <section>
+            <h3>Contacts</h3>
+            <p>Your saved contacts for sending letters.</p>
+            <div id="contacts-list" class="contacts-list">
+                <!-- 联系人列表将通过 JavaScript 生成 -->
+            </div>
+        </section>
+        
+        <section>
+            <h3>AI Pen Pals</h3>
+            <p>Your AI pen pals for slow conversations.</p>
+            <div id="penpals-list" class="penpals-list">
+                <!-- 笔友列表将通过 JavaScript 生成 -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Slow Letter. All rights reserved.</p>
+    </footer>
+    
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
